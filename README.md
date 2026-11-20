@@ -149,3 +149,11 @@ This portfolio is for education, authorized lab practice and defensive security.
 Built with curiosity and consistency. **Keep learning, keep documenting.**
 
 </div>
+
+## Cyborg Write-up and Screenshots
+
+Published article: [TryHackMe Cyborg](https://dang2503.github.io/writeups/cyborg.html).
+
+The Cyborg article includes 14 screenshot references under `assets/writeups/cyborg/`. To enable the screenshots, upload all files from the accompanying **Cyborg_screenshots_for_GitHub.zip** into that exact directory. The article remains readable without them, and both user/root flags are hidden until clicked using native HTML `<details>`.
+
+The screenshots are optional assets hosted within this repository, not external embeds. Keep paths and filenames unchanged when uploading.

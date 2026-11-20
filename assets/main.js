@@ -10,6 +10,14 @@ const cards=document.getElementById('cards'),search=document.getElementById('sea
 function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function safeUrl(u){const url=String(u||'');return /^(?:writeups\/|https:\/\/)/.test(url)?escapeHtml(encodeURI(url)):'#writeups';}
 function render(){const q=search.value.toLowerCase().trim();const matching=posts.filter(p=>(category==='All'||p.category===category)&&[p.title,p.category,p.description,...(p.tags||[])].join(' ').toLowerCase().includes(q));count.textContent=`${matching.length} ${matching.length===1?'entry':'entries'}`;cards.innerHTML=matching.length?matching.map(p=>`<a class="entry entry-link" href="${safeUrl(p.url)}" aria-label="Open write-up: ${escapeHtml(p.title)}"><div class="head"><span class="tag">${escapeHtml(p.category)}</span><span class="level">${escapeHtml(p.level)}</span></div><h3>${escapeHtml(p.title)}</h3><p>${escapeHtml(p.description)}</p><div class="entry-tags">${(p.tags||[]).map(t=>`<span class="topic-tag">${escapeHtml(t)}</span>`).join('')}</div><div class="foot"><span>${escapeHtml(p.date)}</span><span class="read-more">Open write-up ↗</span></div></a>`).join(''):'<p class="fineprint">No matching write-ups yet. Try another search or category.</p>';}
+// Full-card links remain native anchors; this fallback makes child clicks explicit.
+cards.addEventListener('click',event=>{
+  if(event.defaultPrevented||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  const card=event.target.closest('a.entry-link');
+  if(!card||!cards.contains(card))return;
+  // Let the browser navigate via the card anchor, preserving normal history and semantics.
+  if(event.target!==card){event.preventDefault();window.location.assign(card.href);}
+});
 search.addEventListener('input',render);
 const dropdown=document.getElementById('category-dropdown');
 const categoryLabel=document.getElementById('category-label');

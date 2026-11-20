@@ -29,7 +29,7 @@ A personal cybersecurity portfolio documenting a hands-on learning journey acros
 | Section | Purpose |
 | --- | --- |
 | **Home** | A concise introduction, focus areas and terminal-inspired visual |
-| **Write-ups** | Searchable cards with filters for TryHackMe, CTF, SOC / DFIR and Networking |
+| **Write-ups** | Clickable, searchable cards with filters for TryHackMe, CTF, SOC / DFIR, Incident Report and Networking |
 | **Projects** | Space to showcase scripts, automations and security lab projects |
 | **Notes** | Curated learning topics: Networking, Linux, Security+ and Blue Team |
 | **About** | Interests, learning direction and GitHub contact |
@@ -95,6 +95,7 @@ Open `assets/main.js` and add an object inside the `posts` array:
 {
   title: 'Network Fundamentals — Lab Notes',
   category: 'Networking',
+  tags: ['TCP/IP', 'DNS'],
   level: 'Easy',
   date: '2026-11-20',
   description: 'TCP/IP, DNS and practical troubleshooting notes.',
@@ -102,7 +103,7 @@ Open `assets/main.js` and add an object inside the `posts` array:
 },
 ```
 
-Supported filter categories are `TryHackMe`, `CTF`, `SOC / DFIR` and `Networking` (match the spelling exactly). Commit the HTML article and the updated JavaScript file together.
+Supported filter categories are `TryHackMe`, `CTF`, `SOC / DFIR`, `Incident Report` and `Networking` (match the spelling exactly). Add optional `tags` to describe topics; for an incident investigation use `category: 'Incident Report'`. Search matches tags, and clicking anywhere on a card opens the article. Commit the HTML article and the updated JavaScript file together.
 
 ### Suggested Write-up Structure
 

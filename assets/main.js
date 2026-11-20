@@ -22,7 +22,7 @@ const posts = [
 ];
 
 let category = 'All';
-let activeTopic = null;
+const activeTopics = new Set();
 const cards = document.getElementById('cards');
 const search = document.getElementById('search');
 const count = document.getElementById('count');
@@ -62,20 +62,22 @@ function setCategory(next) {
   });
   render();
 }
+// Multi-select topics: a write-up matches when it has at least one selected tag.
 function setTopic(next) {
-  activeTopic = activeTopic === next ? null : next;
+  if (activeTopics.has(next)) activeTopics.delete(next);
+  else activeTopics.add(next);
   render();
 }
 function renderTopics() {
   topicList.innerHTML = topics().map(([tag, number]) =>
-    `<button type="button" class="topic-option${activeTopic === tag ? ' active' : ''}" data-topic="${escapeHtml(tag)}" aria-pressed="${activeTopic === tag}"><span># ${escapeHtml(tag)}</span><span class="topic-count">${number}</span></button>`
+    `<button type="button" class="topic-option${activeTopics.has(tag) ? ' active' : ''}" data-topic="${escapeHtml(tag)}" aria-pressed="${activeTopics.has(tag)}"><span># ${escapeHtml(tag)}</span><span class="topic-count">${number}</span></button>`
   ).join('') || '<p class="empty-topics">Topics appear when write-ups are added.</p>';
 }
 function render() {
   const q = search.value.toLowerCase().trim();
   const matching = posts.filter(post => {
     const categoryMatch = category === 'All' || post.category === category;
-    const topicMatch = !activeTopic || (post.tags || []).includes(activeTopic);
+    const topicMatch = !activeTopics.size || (post.tags || []).some(tag => activeTopics.has(tag));
     const searchMatch = [post.title, post.category, post.description, ...(post.tags || [])]
       .join(' ').toLowerCase().includes(q);
     return categoryMatch && topicMatch && searchMatch;
@@ -83,36 +85,45 @@ function render() {
   count.textContent = `${matching.length} ${matching.length === 1 ? 'article' : 'articles'}`;
   const selected = [];
   if (category !== 'All') selected.push(`<button type="button" class="selected-filter" data-clear="category" aria-label="Remove category filter">Category: ${escapeHtml(category)} ×</button>`);
-  if (activeTopic) selected.push(`<button type="button" class="selected-filter" data-clear="topic" aria-label="Remove topic filter">#${escapeHtml(activeTopic)} ×</button>`);
+  for (const tag of activeTopics) selected.push(`<button type="button" class="selected-filter" data-clear-topic="${escapeHtml(tag)}" aria-label="Remove topic ${escapeHtml(tag)}">#${escapeHtml(tag)} ×</button>`);
   activeFilters.innerHTML = selected.join('');
-  clearFilters.hidden = category === 'All' && !activeTopic && !q;
+  clearFilters.hidden = category === 'All' && !activeTopics.size && !q;
   cards.innerHTML = matching.length ? matching.map(post =>
     `<article class="entry editorial-entry">
       <div class="entry-head"><span class="tag">${escapeHtml(post.category)}</span><span class="level">${escapeHtml(post.level)}</span></div>
       <h3><a class="entry-title-link" href="${safeUrl(post.url)}" aria-label="Open write-up: ${escapeHtml(post.title)}">${escapeHtml(post.title)}</a></h3>
       <p>${escapeHtml(post.description)}</p>
       <div class="entry-tags" aria-label="Topics">${(post.tags || []).map(tag =>
-        `<button type="button" class="topic-tag${activeTopic === tag ? ' active' : ''}" data-topic="${escapeHtml(tag)}" aria-label="Filter by topic ${escapeHtml(tag)}"># ${escapeHtml(tag)}</button>`
+        `<button type="button" class="topic-tag${activeTopics.has(tag) ? ' active' : ''}" data-topic="${escapeHtml(tag)}" aria-label="Filter by topic ${escapeHtml(tag)}"># ${escapeHtml(tag)}</button>`
       ).join('')}</div>
       <div class="foot"><span>${escapeHtml(post.date)}</span><span class="read-more">Read article ↗</span></div>
     </article>`
   ).join('') : '<div class="empty-writeups"><strong>No articles found</strong><p>Try another topic, category, or search.</p><button type="button" id="reset-empty">Show all articles</button></div>';
   renderTopics();
-  topicDropdown.classList.toggle('has-selection', Boolean(activeTopic));
-  topicTotal.textContent = topics().length;
+  topicDropdown.classList.toggle('has-selection', activeTopics.size > 0);
+  topicTotal.textContent = activeTopics.size ? activeTopics.size : topics().length;
+  topicTotal.setAttribute('aria-label', activeTopics.size ? `${activeTopics.size} selected topics` : `${topics().length} available topics`);
+  document.getElementById('clear-topics').hidden = activeTopics.size === 0;
 }
 activeFilters.addEventListener('click', event => {
   const button = event.target.closest('button[data-clear]');
   if (!button) return;
   if (button.dataset.clear === 'category') setCategory('All');
-  else if (button.dataset.clear === 'topic') setTopic(activeTopic);
+});
+activeFilters.addEventListener('click', event => {
+  const button = event.target.closest('button[data-clear-topic]');
+  if (button) setTopic(button.dataset.clearTopic);
 });
 filterButtons.forEach(button => button.addEventListener('click', () => setCategory(button.dataset.filter)));
 topicList.addEventListener('click', event => {
   const button = event.target.closest('button[data-topic]');
   if (!button) return;
   setTopic(button.dataset.topic);
-  topicDropdown.open = false;
+  // Stay open so multiple topics can be selected in one visit.
+});
+document.getElementById('clear-topics').addEventListener('click', () => {
+  activeTopics.clear();
+  render();
 });
 document.addEventListener('click', event => {
   if (topicDropdown.open && !topicDropdown.contains(event.target)) topicDropdown.open = false;
@@ -143,7 +154,7 @@ cards.addEventListener('click', event => {
 });
 function resetAll() {
   search.value = '';
-  activeTopic = null;
+  activeTopics.clear();
   setCategory('All');
 }
 clearFilters.addEventListener('click', resetAll);

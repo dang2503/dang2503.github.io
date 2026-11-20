@@ -80,8 +80,8 @@ function render() {
   });
   count.textContent = `${matching.length} ${matching.length === 1 ? 'article' : 'articles'}`;
   const selected = [];
-  if (category !== 'All') selected.push(`<span class="selected-filter">Category: ${escapeHtml(category)}</span>`);
-  if (activeTopic) selected.push(`<span class="selected-filter"># ${escapeHtml(activeTopic)}</span>`);
+  if (category !== 'All') selected.push(`<button type="button" class="selected-filter" data-clear="category" aria-label="Remove category filter">Category: ${escapeHtml(category)} ×</button>`);
+  if (activeTopic) selected.push(`<button type="button" class="selected-filter" data-clear="topic" aria-label="Remove topic filter">#${escapeHtml(activeTopic)} ×</button>`);
   activeFilters.innerHTML = selected.join('');
   clearFilters.hidden = category === 'All' && !activeTopic && !q;
   cards.innerHTML = matching.length ? matching.map(post =>
@@ -97,6 +97,12 @@ function render() {
   ).join('') : '<div class="empty-writeups"><strong>No articles found</strong><p>Try another topic, category, or search.</p><button type="button" id="reset-empty">Show all articles</button></div>';
   renderTopics();
 }
+activeFilters.addEventListener('click', event => {
+  const button = event.target.closest('button[data-clear]');
+  if (!button) return;
+  if (button.dataset.clear === 'category') setCategory('All');
+  else if (button.dataset.clear === 'topic') setTopic(activeTopic);
+});
 filterButtons.forEach(button => button.addEventListener('click', () => setCategory(button.dataset.filter)));
 topicList.addEventListener('click', event => {
   const button = event.target.closest('button[data-topic]');

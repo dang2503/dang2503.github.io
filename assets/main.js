@@ -69,9 +69,21 @@ function setTopic(next) {
   render();
 }
 function renderTopics() {
-  topicList.innerHTML = topics().map(([tag, number]) =>
-    `<button type="button" class="topic-option${activeTopics.has(tag) ? ' active' : ''}" data-topic="${escapeHtml(tag)}" aria-pressed="${activeTopics.has(tag)}"><span># ${escapeHtml(tag)}</span><span class="topic-count">${number}</span></button>`
-  ).join('') || '<p class="empty-topics">Topics appear when write-ups are added.</p>';
+  const topicItems = topics();
+  const currentButtons = [...topicList.querySelectorAll('button[data-topic]')];
+  // Rebuild only when the list of topics actually changes. Replacing a clicked
+  // button during its click event makes the outside-click handler close the menu.
+  if (currentButtons.length !== topicItems.length ||
+      topicItems.some(([tag], index) => currentButtons[index].dataset.topic !== tag)) {
+    topicList.innerHTML = topicItems.map(([tag, number]) =>
+      `<button type="button" class="topic-option" data-topic="${escapeHtml(tag)}" aria-pressed="false"><span># ${escapeHtml(tag)}</span><span class="topic-count">${number}</span></button>`
+    ).join('') || '<p class="empty-topics">Topics appear when write-ups are added.</p>';
+  }
+  topicList.querySelectorAll('button[data-topic]').forEach(button => {
+    const selected = activeTopics.has(button.dataset.topic);
+    button.classList.toggle('active', selected);
+    button.setAttribute('aria-pressed', String(selected));
+  });
 }
 function render() {
   const q = search.value.toLowerCase().trim();
@@ -118,15 +130,20 @@ filterButtons.forEach(button => button.addEventListener('click', () => setCatego
 topicList.addEventListener('click', event => {
   const button = event.target.closest('button[data-topic]');
   if (!button) return;
+  event.stopPropagation();
   setTopic(button.dataset.topic);
-  // Stay open so multiple topics can be selected in one visit.
+  // Keep the popover open for additional selections.
 });
-document.getElementById('clear-topics').addEventListener('click', () => {
+document.getElementById('clear-topics').addEventListener('click', event => {
+  event.stopPropagation();
   activeTopics.clear();
   render();
 });
 document.addEventListener('click', event => {
-  if (topicDropdown.open && !topicDropdown.contains(event.target)) topicDropdown.open = false;
+  // The event path remains reliable even if some other UI is re-rendered.
+  if (topicDropdown.open && !event.composedPath().includes(topicDropdown)) {
+    topicDropdown.open = false;
+  }
 });
 topicDropdown.addEventListener('keydown', event => {
   if (event.key === 'Escape') {

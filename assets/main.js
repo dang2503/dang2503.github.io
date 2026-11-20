@@ -2,6 +2,15 @@
 // Set category to TryHackMe, CTF, or Incident Report. Add topical tags for discovery.
 const posts = [
   {
+    title: 'Cyborg — Squid, BorgBackup & Linux Privilege Escalation',
+    category: 'TryHackMe',
+    tags: ['Enumeration', 'Credential Recovery', 'BorgBackup', 'Linux', 'Privilege Escalation'],
+    level: 'Easy',
+    date: '20 Nov 2026',
+    description: 'From exposed Squid credentials and a Borg backup to SSH access and a root shell via a vulnerable backup script.',
+    url: 'writeups/cyborg.html'
+  },
+  {
     title: 'TryHackMe Write-up Template',
     category: 'TryHackMe',
     tags: ['Lab', 'Enumeration'],

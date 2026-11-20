@@ -1,16 +1,29 @@
-# Dang's Cybersecurity Portfolio
+# Dang / SEC — Cybersecurity Portfolio
 
-Static GitHub Pages site: HTML + CSS + JavaScript (no build tools required).
+A responsive GitHub Pages portfolio with dark UI, searchable write-up cards, projects, learning notes, and an article template.
 
-## Deploy
-1. Upload `index.html`, `.nojekyll`, `assets/`, and `writeups/` to the root of `dang2503/dang2503.github.io`.
-2. Delete or rename the old `index.md` and remove the old Jekyll theme configuration `_config.yml` if you no longer need it.
-3. GitHub → Repository → Settings → Pages → Deploy from a branch → `main` / `(root)`.
-4. Visit https://dang2503.github.io after deployment.
+## Deploy (do not delete your existing GitHub repository)
 
-## Add write-ups
-1. Copy `writeups/template.html` to a new file such as `writeups/first-lab.html` and edit its content.
-2. In `assets/main.js`, add one entry to `posts` with title, category, level, date, description, and url.
-3. Commit both files. Categories already supported: `TryHackMe`, `CTF`, `SOC / DFIR`, `Networking`.
+1. Open `https://github.com/dang2503/dang2503.github.io`.
+2. Ensure `index.html`, `.nojekyll`, `assets/style.css`, `assets/main.js`, and `writeups/template.html` are uploaded to **the repository root**, keeping folders.
+3. If `index.md` remains from the old Jekyll site, delete it. Remove `_config.yml` with `jekyll-theme-hacker` if not using Jekyll anymore.
+4. Settings → Pages → Build and deployment → Deploy from a branch → `main` → `/ (root)` → Save.
+5. Check Actions for successful Pages deployment; then visit `https://dang2503.github.io/?v=4`.
 
-Current write-up cards and projects are explicitly placeholder templates, not completed work.
+## Add a write-up
+
+1. Copy `writeups/template.html` and rename, e.g. `writeups/tryhackme-intro.html`.
+2. Edit its title, body, and metadata.
+3. Add an entry to the `posts` array in `assets/main.js`, e.g.:
+
+```javascript
+{ title: 'Intro to Networking', category: 'TryHackMe', level: 'Easy', date: '2026-11-20', description: 'What I learned about TCP/IP and network investigation.', url: 'writeups/tryhackme-intro.html' },
+```
+
+4. Commit both files. Cards will update automatically.
+
+## Important
+
+- The initial posts are **templates**, not finished labs.
+- Only publish content you are allowed to disclose; omit secrets and credentials.
+- If the page shows the old green Jekyll theme, confirm Pages deployed from `main` root, remove obsolete `index.md`, inspect workflow results and hard-refresh.

@@ -4,18 +4,18 @@
 <meta name="theme-color" content="#080d16"><title>TryHackMe Cyborg Write-up | DANG / SEC</title>
 <link rel="stylesheet" href="../assets/style.css?v=cyborg-20261120"><style>
 :root{color-scheme:dark}
-.article-layout{display:grid;grid-template-columns:minmax(0,790px) minmax(0,230px);justify-content:space-between;gap:55px;align-items:start;margin:30px auto 100px}
+.article-layout{display:grid;grid-template-columns:minmax(0,1fr) 215px;gap:28px;align-items:start;margin:30px auto 100px}
 .article-main{min-width:0}
 .breadcrumb{display:flex;gap:9px;align-items:center;flex-wrap:wrap;color:#91a8ba;font:11px 'JetBrains Mono',monospace;margin:42px 0 28px}
 .breadcrumb a:hover{color:var(--mint)}
 .article-main h1{font:700 clamp(37px,5vw,58px)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.05em;margin:14px 0 20px}
-.article-lede{color:#b3c6d7;font-size:16px;line-height:1.9;max-width:730px}
+.article-lede{color:#b3c6d7;font-size:17px;line-height:1.85;max-width:100%}
 .article-meta{display:flex;flex-wrap:wrap;gap:8px;margin:21px 0 28px}
 .article-meta span{background:#15263a;border:1px solid #2e485b;border-radius:99px;padding:5px 11px;font:11px 'JetBrains Mono',monospace;color:#b0c9da}
 .article-divider{height:1px;background:#29384c;margin:32px 0 39px}
 .article-main h2{font:700 27px/1.25 'Space Grotesk',sans-serif;letter-spacing:-.025em;margin:49px 0 16px;scroll-margin-top:28px}
 .article-main h3{font:700 18px 'Space Grotesk',sans-serif;margin:30px 0 11px;scroll-margin-top:24px}
-.article-main p,.article-main li{color:#b8cbda;font-size:14px;line-height:1.9}
+.article-main p,.article-main li{color:#b8cbda;font-size:15px;line-height:1.85}
 .article-main strong{color:#e6f3fa}
 .article-main a:not(.evidence a){text-decoration:none}
 .article-main a:not(.evidence a):hover{color:var(--mint)}
@@ -30,7 +30,7 @@
 .article-main .evidence{margin:21px 0 32px;border:1px solid #2d4257;border-radius:14px;overflow:hidden;background:#0d1725}
 .article-main .evidence.missing{display:none}
 .article-main .evidence a{display:block;background:#09121d}
-.article-main .evidence img{width:100%;height:auto;display:block;max-height:480px;object-fit:contain}
+.article-main .evidence img{width:100%;height:auto;display:block;max-height:580px;object-fit:contain}
 .article-main .evidence figcaption{font:11px/1.6 'DM Sans',sans-serif;color:#91a8be;padding:11px 15px;background:#142233;border-top:1px solid #253a4b}
 .flag-box{border:1px solid #387d62;border-radius:14px;background:linear-gradient(135deg,#16382e,#101d25);margin:22px 0 32px;overflow:hidden}
 .flag-box summary{display:flex;justify-content:space-between;gap:18px;align-items:center;list-style:none;padding:17px 19px;cursor:pointer;color:#d9fbe9;font-size:14px;font-weight:700}
@@ -44,7 +44,7 @@
 .flag-secret{padding:15px 19px 19px;border-top:1px solid #2b634d}
 .flag-secret code{display:block;background:#091a16!important;color:#a9f9c9!important;border:1px solid #35634d!important;font:12px/1.75 'JetBrains Mono',monospace!important;padding:12px!important;overflow-wrap:anywhere;white-space:normal}
 .flag-secret p{font-size:11px;color:#9bb9aa;margin:9px 0 0}
-.toc{position:sticky;top:40px;border-left:1px solid #2d4153;padding:12px 0 12px 20px;margin-top:82px}
+.toc{position:sticky;top:40px;border-left:1px solid #2d4153;padding:12px 0 12px 17px;margin-top:48px}
 .toc h2{color:#94aabd;font:700 10px 'JetBrains Mono',monospace;letter-spacing:.12em;margin:0 0 18px}
 .toc a{display:block;color:#9fb4c5;font-size:12px;line-height:1.5;margin:12px 0;transition:color .15s}
 .toc a:hover{color:var(--mint)}

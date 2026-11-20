@@ -103,7 +103,7 @@ Open `assets/main.js` and add an object inside the `posts` array:
 },
 ```
 
-Supported filter categories are `TryHackMe`, `CTF` and `Incident Report` (match the spelling exactly). Add optional `tags` to describe topics; for an incident investigation use `category: 'Incident Report'`. Search matches tags, and clicking a card outside its topic buttons opens the article. Clicking a topic chip instead filters related write-ups. The compact Topics menu next to Search shows topic chips and counts generated automatically from the posts array. Click a selected filter chip to remove it. Commit the HTML article and the updated JavaScript file together.
+Supported filter categories are `TryHackMe`, `CTF` and `Incident Report` (match the spelling exactly). Add optional `tags` to describe topics; for an incident investigation use `category: 'Incident Report'`. Search matches tags, and clicking a card outside its topic buttons opens the article. Clicking a topic chip instead filters related write-ups. The compact Topics menu next to Search shows topic chips and counts generated automatically from the posts array. Select multiple topic chips (OR matching: any selected tag), click selected chips to remove them, or use Clear topics in the topic menu. Commit the HTML article and the updated JavaScript file together.
 
 ### Suggested Write-up Structure
 

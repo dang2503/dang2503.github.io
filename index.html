@@ -22,13 +22,29 @@
       <button type="button" class="active" data-filter="All" aria-pressed="true">All</button>
       <button type="button" data-filter="TryHackMe" aria-pressed="false">TryHackMe</button>
       <button type="button" data-filter="CTF" aria-pressed="false">CTF</button>
-      <button type="button" data-filter="SOC / DFIR" aria-pressed="false">SOC / DFIR</button>
       <button type="button" data-filter="Incident Report" aria-pressed="false">Incident Reports</button>
-      <button type="button" data-filter="Networking" aria-pressed="false">Networking</button>
     </div>
   </div>
-  <div id="cards" class="cards hybrid-cards"></div>
-  <p class="fineprint">The entries below are <strong>starter templates</strong>, not completed labs. Replace them with your own published write-ups.</p>
+  <div class="writeup-explorer">
+    <div class="writeup-feed">
+      <div class="feed-toolbar">
+        <span class="feed-caption">LATEST WRITING</span>
+        <button type="button" id="clear-filters" class="clear-filters" hidden>Clear filters ×</button>
+      </div>
+      <div id="active-filters" class="active-filters" aria-live="polite"></div>
+      <div id="cards" class="cards hybrid-cards"></div>
+      <p class="fineprint">These are <strong>starter templates</strong>, not completed labs. Replace them with your own published write-ups.</p>
+    </div>
+    <aside class="topics-sidebar" aria-labelledby="topics-title">
+      <div class="topics-header">
+        <span class="topics-eyebrow">DISCOVER</span>
+        <h3 id="topics-title">Explore Topics</h3>
+        <p>Choose a topic to find related write-ups.</p>
+      </div>
+      <div id="topic-list" class="topic-list" aria-label="Browse topics"></div>
+      <div class="topic-footnote">Topics update automatically as new write-ups are added.</div>
+    </aside>
+  </div>
 </section>
 <section id="projects" class="section"><div class="section-head"><div><p class="kicker">02 / BUILD & EXPERIMENT</p><h2>Projects</h2><p>Tools and experiments I am building.</p></div></div><div class="project-grid"><article class="panel"><div class="project-icon">⌘</div><h3>Python Security Tools</h3><p>Space for Python scripts, utilities and automation experiments.</p><div class="chips"><span>Python</span><span>Security</span></div><p class="status">Planned / add your repo</p></article><article class="panel"><div class="project-icon">◈</div><h3>Home SOC Lab</h3><p>Space for log collection, detection rules and incident analysis.</p><div class="chips"><span>Blue Team</span><span>SIEM</span></div><p class="status">Planned / add your repo</p></article></div></section>
 <section id="achievements" class="section"><div class="section-head"><div><p class="kicker">03 / ACHIEVEMENTS</p><h2>Milestones &amp; recognition</h2><p>Verified credentials, CTF participation, and milestones from my cybersecurity journey.</p></div></div><div class="notes"><div>🏅 <strong>Certifications</strong><small>Verified credentials and completed certifications will appear here.</small></div><div>🚩 <strong>CTF Events</strong><small>Competition participation and results, added when completed.</small></div><div>🏆 <strong>Badges &amp; Awards</strong><small>Earned platform badges and awards, with evidence links.</small></div><div>📍 <strong>Milestones</strong><small><b>01 Nov 2026</b> — Started learning TryHackMe Cyber Security 101, Networking, and Linux.</small></div></div><p class="fineprint">Only completed and verifiable achievements are listed. No placeholder represents an earned credential.</p></section>

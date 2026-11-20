@@ -123,8 +123,8 @@
 #writeups .topics-heading-icon{display:grid;place-items:center;width:25px;height:25px;border-radius:7px;background:#1d3340;color:#8edbbd;font:700 15px 'JetBrains Mono',monospace}
 #writeups .topics-heading h3{margin:0;color:#dae9f3;font:700 13px 'Space Grotesk',sans-serif}
 #writeups .topics-help{margin-left:4px;color:#8197aa;font-size:11px}
-#writeups .topic-list{display:flex;flex-wrap:wrap;gap:8px}
-#writeups .topic-option{display:inline-flex;align-items:center;gap:9px;background:#172638;border:1px solid #344a5e;border-radius:999px;color:#b0c6d7;padding:7px 12px;font:500 12px 'DM Sans',sans-serif;transition:.18s}
+#writeups .topic-list{display:flex;flex-direction:row;flex-wrap:nowrap;align-items:center;justify-content:flex-start;gap:9px;width:100%;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:2px 0 8px;scrollbar-width:thin;scrollbar-color:#36556a transparent}
+#writeups .topic-option{display:inline-flex;flex:0 0 auto;width:auto;min-width:max-content;white-space:nowrap;align-items:center;gap:9px;background:#172638;border:1px solid #344a5e;border-radius:999px;color:#b0c6d7;padding:7px 12px;font:500 12px 'DM Sans',sans-serif;transition:.18s}
 #writeups .topic-option:hover{background:#1f3544;border-color:#5c817e;color:#eef9f5}
 #writeups .topic-option.active{background:#1c463d;border-color:#44856e;color:#bdf4db}
 #writeups .topic-count{font:10px 'JetBrains Mono',monospace;color:#8fa3b5}

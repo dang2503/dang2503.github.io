@@ -29,9 +29,9 @@ A personal cybersecurity portfolio documenting a hands-on learning journey acros
 | Section | Purpose |
 | --- | --- |
 | **Home** | A concise introduction, focus areas and terminal-inspired visual |
-| **Write-ups** | Clickable, searchable cards with filters for TryHackMe, CTF, SOC / DFIR, Incident Report and Networking |
+| **Write-ups** | Medium-inspired write-up explorer with categories (All, TryHackMe, CTF, Incident Reports), clickable topic tags, and combined search |
 | **Projects** | Space to showcase scripts, automations and security lab projects |
-| **Notes** | Curated learning topics: Networking, Linux, Security+ and Blue Team |
+| **Achievements** | Certifications, CTF recognition, badges and milestones |
 | **About** | Interests, learning direction and GitHub contact |
 
 - Responsive dark interface for desktop and mobile
@@ -103,7 +103,7 @@ Open `assets/main.js` and add an object inside the `posts` array:
 },
 ```
 
-Supported filter categories are `TryHackMe`, `CTF`, `SOC / DFIR`, `Incident Report` and `Networking` (match the spelling exactly). Add optional `tags` to describe topics; for an incident investigation use `category: 'Incident Report'`. Search matches tags, and clicking anywhere on a card opens the article. Commit the HTML article and the updated JavaScript file together.
+Supported filter categories are `TryHackMe`, `CTF` and `Incident Report` (match the spelling exactly). Add optional `tags` to describe topics; for an incident investigation use `category: 'Incident Report'`. Search matches tags, and clicking a card outside its topic buttons opens the article. Clicking a topic chip instead filters related write-ups. The Explore Topics area and counts are populated automatically from the posts array. Commit the HTML article and the updated JavaScript file together.
 
 ### Suggested Write-up Structure
 

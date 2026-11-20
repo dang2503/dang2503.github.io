@@ -19,20 +19,14 @@ cards.addEventListener('click',event=>{
   if(event.target!==card){event.preventDefault();window.location.assign(card.href);}
 });
 search.addEventListener('input',render);
-const dropdown=document.getElementById('category-dropdown');
-const categoryLabel=document.getElementById('category-label');
 const filterButtons=[...document.querySelectorAll('#filters button')];
 filterButtons.forEach(button=>button.addEventListener('click',()=>{
   category=button.dataset.filter;
-  categoryLabel.textContent=category==='All'?'All Categories':category;
   filterButtons.forEach(b=>{
     const selected=b===button;
     b.classList.toggle('active',selected);
     b.setAttribute('aria-pressed',String(selected));
   });
-  dropdown.open=false;
   render();
 }));
-document.addEventListener('click',event=>{if(dropdown.open&&!dropdown.contains(event.target))dropdown.open=false;});
-dropdown.addEventListener('keydown',event=>{if(event.key==='Escape'){dropdown.open=false;dropdown.querySelector('summary').focus();}});
 document.getElementById('year').textContent=new Date().getFullYear();render();

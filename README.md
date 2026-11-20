@@ -29,7 +29,7 @@ A personal cybersecurity portfolio documenting a hands-on learning journey acros
 | Section | Purpose |
 | --- | --- |
 | **Home** | A concise introduction, focus areas and terminal-inspired visual |
-| **Write-ups** | Medium-inspired write-up explorer with compact topic chips below category tabs, combined search, and click-to-filter tags |
+| **Write-ups** | Medium-inspired write-up explorer with compact Topics dropdown beside search, combined search, and click-to-filter tags |
 | **Projects** | Space to showcase scripts, automations and security lab projects |
 | **Achievements** | Certifications, CTF recognition, badges and milestones |
 | **About** | Interests, learning direction and GitHub contact |
@@ -103,7 +103,7 @@ Open `assets/main.js` and add an object inside the `posts` array:
 },
 ```
 
-Supported filter categories are `TryHackMe`, `CTF` and `Incident Report` (match the spelling exactly). Add optional `tags` to describe topics; for an incident investigation use `category: 'Incident Report'`. Search matches tags, and clicking a card outside its topic buttons opens the article. Clicking a topic chip instead filters related write-ups. The Popular topics chips and counts below the search are populated automatically from the posts array. Click a selected filter chip to remove it. Commit the HTML article and the updated JavaScript file together.
+Supported filter categories are `TryHackMe`, `CTF` and `Incident Report` (match the spelling exactly). Add optional `tags` to describe topics; for an incident investigation use `category: 'Incident Report'`. Search matches tags, and clicking a card outside its topic buttons opens the article. Clicking a topic chip instead filters related write-ups. The compact Topics menu next to Search shows topic chips and counts generated automatically from the posts array. Click a selected filter chip to remove it. Commit the HTML article and the updated JavaScript file together.
 
 ### Suggested Write-up Structure
 

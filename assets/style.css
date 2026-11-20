@@ -168,3 +168,12 @@
 #writeups .empty-writeups button{background:#1c4339;color:#b4f3d7;border:1px solid #367765;padding:9px 12px;border-radius:8px}
 @media(max-width:980px){#writeups.hybrid-writeups .hybrid-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:690px){#writeups.hybrid-writeups .hybrid-cards{grid-template-columns:1fr}#writeups.hybrid-writeups .hybrid-cards .editorial-entry{min-height:215px}#writeups .topics-strip{padding-top:14px}}
+
+/* Multi-select topic picker */
+#writeups .topic-popover-actions{display:flex;justify-content:space-between;align-items:center;gap:12px;border-top:1px solid #2d4356;margin-top:14px;padding-top:12px}
+#writeups .topic-popover-actions span{font-size:10px;color:#8da5b8}
+#writeups .topic-popover-actions button{font:600 11px 'DM Sans',sans-serif;color:#95e8c6;background:transparent;border:0;padding:5px;cursor:pointer}
+#writeups .topic-popover-actions button:hover{text-decoration:underline}
+#writeups .topic-popover-actions button[hidden]{display:none}
+#writeups .topic-option.active:before{content:'✓';font-weight:700;color:#a6efcd;margin-right:2px}
+#writeups .topic-dropdown.has-selection .topic-trigger-count{background:#245f4a;color:#d1ffe4}

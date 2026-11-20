@@ -27,6 +27,8 @@ const cards = document.getElementById('cards');
 const search = document.getElementById('search');
 const count = document.getElementById('count');
 const topicList = document.getElementById('topic-list');
+const topicDropdown = document.getElementById('topic-dropdown');
+const topicTotal = document.getElementById('topic-total');
 const activeFilters = document.getElementById('active-filters');
 const clearFilters = document.getElementById('clear-filters');
 const filterButtons = [...document.querySelectorAll('#filters button')];
@@ -96,6 +98,8 @@ function render() {
     </article>`
   ).join('') : '<div class="empty-writeups"><strong>No articles found</strong><p>Try another topic, category, or search.</p><button type="button" id="reset-empty">Show all articles</button></div>';
   renderTopics();
+  topicDropdown.classList.toggle('has-selection', Boolean(activeTopic));
+  topicTotal.textContent = topics().length;
 }
 activeFilters.addEventListener('click', event => {
   const button = event.target.closest('button[data-clear]');
@@ -106,7 +110,18 @@ activeFilters.addEventListener('click', event => {
 filterButtons.forEach(button => button.addEventListener('click', () => setCategory(button.dataset.filter)));
 topicList.addEventListener('click', event => {
   const button = event.target.closest('button[data-topic]');
-  if (button) setTopic(button.dataset.topic);
+  if (!button) return;
+  setTopic(button.dataset.topic);
+  topicDropdown.open = false;
+});
+document.addEventListener('click', event => {
+  if (topicDropdown.open && !topicDropdown.contains(event.target)) topicDropdown.open = false;
+});
+topicDropdown.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    topicDropdown.open = false;
+    topicDropdown.querySelector('summary').focus();
+  }
 });
 cards.addEventListener('click', event => {
   const topicButton = event.target.closest('button[data-topic]');

@@ -9,3 +9,19 @@
 .entry-link .read-more{color:var(--mint);font-weight:700}
 .entry-link:hover .read-more,.entry-link:focus-visible .read-more{text-decoration:underline}
 .entry-link:focus-visible{outline:2px solid var(--mint);outline-offset:4px;border-color:var(--mint)}
+
+/* Collapsible category selector: compact by default, animated menu on open. */
+.category-dropdown{position:relative;z-index:10;min-width:205px}
+.category-trigger{display:flex;align-items:center;justify-content:space-between;gap:22px;cursor:pointer;list-style:none;border:1px solid #36576a;border-radius:11px;background:#14283a;color:var(--text);font:700 12px 'JetBrains Mono',monospace;padding:12px 14px;user-select:none;transition:border-color .18s,background .18s}
+.category-trigger::-webkit-details-marker{display:none}
+.category-trigger:hover,.category-dropdown[open] .category-trigger{border-color:var(--mint);background:#193446}
+.category-chevron{display:inline-block;color:var(--mint);font-size:19px;line-height:12px;transition:transform .22s}
+.category-dropdown[open] .category-chevron{transform:rotate(180deg)}
+.category-menu{display:flex;flex-direction:column;gap:5px;position:absolute;top:calc(100% + 7px);right:0;left:0;z-index:15;border:1px solid #345469;border-radius:12px;background:#101d2d;padding:7px;box-shadow:0 20px 45px #0008;transform-origin:top;animation:category-slide-in .2s ease both}
+.category-menu button{display:block;text-align:left;width:100%;border:0;border-radius:8px;padding:11px 12px;font-size:12px}
+.category-menu button.active{background:#215549;color:#a2ffe1}
+@keyframes category-slide-in{from{opacity:0;transform:translateY(-7px) scaleY(.97)}to{opacity:1;transform:translateY(0) scaleY(1)}}
+.entry-link .topic-tag{cursor:pointer}
+.entry-link:hover .topic-tag{border-color:#4d9d91}
+@media(max-width:690px){.category-dropdown{width:100%}.category-menu{right:0;left:0}}
+@media(prefers-reduced-motion:reduce){.category-menu{animation:none}.category-chevron{transition:none}}

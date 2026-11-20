@@ -1,0 +1,72 @@
+[
+  {
+    "source": "Pasted image 20261120212945.png",
+    "target": "assets/writeups/cyborg/01-nmap-scan.png",
+    "size_bytes": 40062
+  },
+  {
+    "source": "Pasted image 20261120213216.png",
+    "target": "assets/writeups/cyborg/02-gobuster-enumeration.png",
+    "size_bytes": 55828
+  },
+  {
+    "source": "Pasted image 20261120213421.png",
+    "target": "assets/writeups/cyborg/03-admin-shoutbox.png",
+    "size_bytes": 67626
+  },
+  {
+    "source": "Pasted image 20261120213515.png",
+    "target": "assets/writeups/cyborg/04-squid-directory.png",
+    "size_bytes": 34472
+  },
+  {
+    "source": "Pasted image 20261120213543.png",
+    "target": "assets/writeups/cyborg/05-squid-configuration.png",
+    "size_bytes": 14381
+  },
+  {
+    "source": "Pasted image 20261120213556.png",
+    "target": "assets/writeups/cyborg/06-proxy-hash.png",
+    "size_bytes": 4179
+  },
+  {
+    "source": "Pasted image 20261120215546.png",
+    "target": "assets/writeups/cyborg/07-admin-archive-download.png",
+    "size_bytes": 11653
+  },
+  {
+    "source": "Pasted image 20261120220301.png",
+    "target": "assets/writeups/cyborg/08-borg-list.png",
+    "size_bytes": 149484
+  },
+  {
+    "source": "Pasted image 20261120220423.png",
+    "target": "assets/writeups/cyborg/09-alex-note.png",
+    "size_bytes": 20061
+  },
+  {
+    "source": "Pasted image 20261120220843.png",
+    "target": "assets/writeups/cyborg/10-sudo-privileges.png",
+    "size_bytes": 15360
+  },
+  {
+    "source": "Pasted image 20261120221104.png",
+    "target": "assets/writeups/cyborg/11-backup-script.png",
+    "size_bytes": 65932
+  },
+  {
+    "source": "Pasted image 20261120221550.png",
+    "target": "assets/writeups/cyborg/12-backup-execution.png",
+    "size_bytes": 85145
+  },
+  {
+    "source": "Pasted image 20261120221834.png",
+    "target": "assets/writeups/cyborg/13-stdout-issue.png",
+    "size_bytes": 18232
+  },
+  {
+    "source": "Pasted image 20261120222058.png",
+    "target": "assets/writeups/cyborg/14-stdout-recovery.png",
+    "size_bytes": 9842
+  }
+]

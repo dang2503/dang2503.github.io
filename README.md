@@ -29,9 +29,9 @@ A personal cybersecurity portfolio documenting a hands-on learning journey acros
 | Section | Purpose |
 | --- | --- |
 | **Home** | A concise introduction, focus areas and terminal-inspired visual |
-| **Write-ups** | Searchable cards with filters for TryHackMe, CTF, SOC / DFIR and Networking |
+| **Write-ups** | Medium-inspired write-up explorer with compact Topics dropdown beside search, combined search, and click-to-filter tags |
 | **Projects** | Space to showcase scripts, automations and security lab projects |
-| **Notes** | Curated learning topics: Networking, Linux, Security+ and Blue Team |
+| **Achievements** | Certifications, CTF recognition, badges and milestones |
 | **About** | Interests, learning direction and GitHub contact |
 
 - Responsive dark interface for desktop and mobile
@@ -95,6 +95,7 @@ Open `assets/main.js` and add an object inside the `posts` array:
 {
   title: 'Network Fundamentals — Lab Notes',
   category: 'Networking',
+  tags: ['TCP/IP', 'DNS'],
   level: 'Easy',
   date: '2026-11-20',
   description: 'TCP/IP, DNS and practical troubleshooting notes.',
@@ -102,7 +103,7 @@ Open `assets/main.js` and add an object inside the `posts` array:
 },
 ```
 
-Supported filter categories are `TryHackMe`, `CTF`, `SOC / DFIR` and `Networking` (match the spelling exactly). Commit the HTML article and the updated JavaScript file together.
+Supported filter categories are `TryHackMe`, `CTF` and `Incident Report` (match the spelling exactly). Add optional `tags` to describe topics; for an incident investigation use `category: 'Incident Report'`. Search matches tags, and clicking a card outside its topic buttons opens the article. Clicking a topic chip instead filters related write-ups. The compact Topics menu next to Search shows topic chips and counts generated automatically from the posts array. Select multiple topic chips (OR matching: any selected tag), click selected chips to remove them, or use Clear topics in the topic menu. Commit the HTML article and the updated JavaScript file together.
 
 ### Suggested Write-up Structure
 
@@ -148,3 +149,11 @@ This portfolio is for education, authorized lab practice and defensive security.
 Built with curiosity and consistency. **Keep learning, keep documenting.**
 
 </div>
+
+## Cyborg Write-up and Screenshots
+
+Published article: [TryHackMe Cyborg](https://dang2503.github.io/writeups/cyborg.html).
+
+The Cyborg article includes 14 screenshot references under `assets/writeups/cyborg/`. To enable the screenshots, upload all files from the accompanying **Cyborg_screenshots_for_GitHub.zip** into that exact directory. The article remains readable without them, and both user/root flags are hidden until clicked using native HTML `<details>`.
+
+The screenshots are optional assets hosted within this repository, not external embeds. Keep paths and filenames unchanged when uploading.
